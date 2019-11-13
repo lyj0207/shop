@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="jquery.js"></script>
+	<script src="jquery.uploadify.js"></script>
+	<link rel="stylesheet" href="uploadify.css">
+</head>
+<body>
+	<input type="file" id="uploadify">
+	<div id="show_img" style="width: 10px;height: 10px"></div>
+</body>
+</html>
+<script>
+	$(document).ready(function(){
+		$("#uploadify").uploadify({
+			'swf':'uploadify.swf',
+			'uploader' : 'aaa.php',
+			'onUploadSuccess':function(file,data,msg){
+				// console.log(file);
+				// console.log(data);
+				// console.log(msg);
+				 var img="<img src='http://127.0.0.1/xi/"+data+"' alt='上传失败'>";
+                // var video="<video src='"+msg.data.path+"' controls='controls'></video>";
+                $("#show_img").append(img);
+			}
+		});
+	});
+</script>

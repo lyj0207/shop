@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery.min.js"></script>
+</head>
+<h3>登陆</h3>
+<body>
+	用户名：
+	<input type="text" name="name"><br/>
+	密码:
+	<input type="passwore" name="pwd"><br/>
+	<input type="button" name="btn" value="登陆">
+</body>
+</html>
+<script>
+	$(document).ready(function(){
+		$("input[name='btn']").click(function(){
+			// alert(1);
+			var data={}; //js的json
+			var name=$("input[name='name']").val();
+			var pwd=$("input[name='pwd']").val();
+			data.name=name;
+			data.pwd=pwd;
+			$.ajax({
+				type:"post",
+				data:data,
+				dataType:"json",
+				url:"login_do.php",
+				success:function(res){
+					// console.log(res);
+					if (res.code==200) {
+              			alert('登陆成功');
+              			location.href='list.php';
+              		};
+				}
+			});
+		})
+	})
+</script>
